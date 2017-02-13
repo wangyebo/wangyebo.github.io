@@ -6,17 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://huabuzaiyang.com">
-  <title>Archives | 华不再扬</title>
+  <title>Linux服务启动配置文件的作用和流程 | 华不再扬</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="start from zero">
-<meta property="og:type" content="website">
-<meta property="og:title" content="华不再扬">
-<meta property="og:url" content="http://huabuzaiyang.com/archives/index.html">
+  <meta name="description" content="一、Centos6.4最小化安装系统服务的运行状态
+二、启动服务详细介绍
+三、Linux下chkconfig命令详解
+四、服务的启动/关闭
+##1）Centos6.4最小化安装系统服务的运行状态获取开机启动服务，输入chkconfig –list 命令1234567891011121314151617[root@chusihhua ~]# lsauditd         	0:off	1:off">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux服务启动配置文件的作用和流程">
+<meta property="og:url" content="http://huabuzaiyang.com/2017/02/11/2linux服务启动配置文件的作用和流程/index.html">
 <meta property="og:site_name" content="华不再扬">
-<meta property="og:description" content="start from zero">
+<meta property="og:description" content="一、Centos6.4最小化安装系统服务的运行状态
+二、启动服务详细介绍
+三、Linux下chkconfig命令详解
+四、服务的启动/关闭
+##1）Centos6.4最小化安装系统服务的运行状态获取开机启动服务，输入chkconfig –list 命令1234567891011121314151617[root@chusihhua ~]# lsauditd         	0:off	1:off">
+<meta property="og:updated_time" content="2017-02-13T06:31:37.757Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="华不再扬">
-<meta name="twitter:description" content="start from zero">
+<meta name="twitter:title" content="Linux服务启动配置文件的作用和流程">
+<meta name="twitter:description" content="一、Centos6.4最小化安装系统服务的运行状态
+二、启动服务详细介绍
+三、Linux下chkconfig命令详解
+四、服务的启动/关闭
+##1）Centos6.4最小化安装系统服务的运行状态获取开机启动服务，输入chkconfig –list 命令1234567891011121314151617[root@chusihhua ~]# lsauditd         	0:off	1:off">
   
     <link rel="alternative" href="/atom.xml" title="华不再扬" type="application/atom+xml">
   
@@ -156,103 +169,167 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2linux服务启动配置文件的作用和流程" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/13/3账户管理操作机制/" class="archive-article-date">
-  	<time datetime="2017-02-13T06:27:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/13/3账户管理操作机制/">Linux账户管理审计策略和验证机制</a>
+    <h1 class="article-title" itemprop="name">
+      Linux服务启动配置文件的作用和流程
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/11/2linux服务启动配置文件的作用和流程/" class="archive-article-date">
+        
+        <a href="/2017/02/11/2linux服务启动配置文件的作用和流程/" class="archive-article-date">
   	<time datetime="2017-02-11T06:27:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-11</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/11/2linux服务启动配置文件的作用和流程/">Linux服务启动配置文件的作用和流程</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="#id1">一、Centos6.4最小化安装系统服务的运行状态</a></p>
+<p><a href="#id2">二、启动服务详细介绍</a></p>
+<p><a href="#id3">三、Linux下chkconfig命令详解</a></p>
+<p><a href="#id4">四、服务的启动/关闭</a></p>
+<p>##<a name="id1">1）Centos6.4最小化安装系统服务的运行状态</a><br>获取开机启动服务，输入chkconfig –list 命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[root@chusihhua ~]# ls</div><div class="line">auditd         	0:off	1:off	2:on	3:on	4:on	5:on	6:off</div><div class="line">blk-availability	0:off	1:on	2:on	3:on	4:on	5:on	6:off</div><div class="line">crond          	0:off	1:off	2:on	3:on	4:on	5:on	6:off</div><div class="line">ip6tables      	0:off	1:off	2:on	3:on	4:on	5:on	6:off</div><div class="line">iptables       	0:off	1:off	2:on	3:on	4:on	5:on	6:off</div><div class="line">lvm2-monitor   	0:off	1:on	2:on	3:on	4:on	5:on	6:off</div><div class="line">netconsole     	0:off	1:off	2:off	3:off	4:off	5:off	6:off</div><div class="line">netfs          	0:off	1:off	2:off	3:on	4:on	5:on	6:off</div><div class="line">network        	0:off	1:off	2:on	3:on	4:on	5:on	6:off</div><div class="line">postfix        	0:off	1:off	2:on	3:on	4:on	5:on	6:off</div><div class="line">rdisc          	0:off	1:off	2:off	3:off	4:off	5:off	6:off</div><div class="line">restorecond    	0:off	1:off	2:off	3:off	4:off	5:off	6:off</div><div class="line">rsyslog        	0:off	1:off	2:on	3:on	4:on	5:on	6:off</div><div class="line">saslauthd      	0:off	1:off	2:off	3:off	4:off	5:off	6:off</div><div class="line">sshd           	0:off	1:off	2:on	3:on	4:on	5:on	6:off</div><div class="line">udev-post      	0:off	1:on	2:on	3:on	4:on	5:on	6:off</div></pre></td></tr></table></figure></p>
+<p>##<a name="id2">2）启动服务详细介绍</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">1.auditd(审核守护进程)</div><div class="line">Linux审计系统中用户空间的一个组件，其负责将审计记录写入磁盘。</div><div class="line"></div><div class="line">2.blk-availability(lvm2相关)</div><div class="line"></div><div class="line">3.crond(用于周期性执行一条或多条指令)</div><div class="line"></div><div class="line">4.ip6tables(ipv6的防火墙)</div><div class="line"></div><div class="line">5.iptables(ipv4的防火墙软件)</div><div class="line"></div><div class="line">6.lvm2-monitor(lvm监视)</div><div class="line">如果使用LVM逻辑卷管理就开启</div><div class="line"></div><div class="line">7.netconsole(初始化网络控制台登陆)</div><div class="line"></div><div class="line">8.netfs(网络中的共享文件空间)</div><div class="line">用于在系统启动时自动挂载网络中的共享文件空间，如NFS，Samba等。</div><div class="line"></div><div class="line">9.network(网络)	</div><div class="line">在系统启动时激活所有网络接口</div><div class="line"></div><div class="line">10.postfix(邮件服务器)</div><div class="line">如服务器不提供邮件服务，可关闭</div><div class="line"></div><div class="line">11.rdisc(预先加载)</div><div class="line">该服务通过预先加载特定的应用程序到内存中以提供性能。如果你想程序启动更快，就开启它。</div><div class="line"></div><div class="line">12.restorecond(监控文件)</div><div class="line">用于给 SELinux 监测和重新加载正确的文件上下文（file contexts）。它不是必须的，但如果你使用 SELinux 的话强烈建议开启它。</div><div class="line"></div><div class="line">13.rsyslog(日志服务器)</div><div class="line">提供系统的登录档案记录。</div><div class="line"></div><div class="line">14.saslauthd	</div><div class="line">sasl认证服务相关,可关闭	</div><div class="line"></div><div class="line">15.sshd(远程登录)</div><div class="line">ssh服务端，可提供安全的shell连接，用于远程登录</div><div class="line"></div><div class="line">16.udev-post(设备管理)</div><div class="line">udev&quot;的用途是Fedora的设备管理系统，默认情况下&quot;udev&quot;支持很多个规则，用于设备的权限和行为管理，该服务允许用于保存用户应用的规则。</div></pre></td></tr></table></figure></p>
+<p>可关闭的服务</p>
+<blockquote>
+<p>blk-availability</p>
+<p>netconsole</p>
+<p>lvm2-monitor</p>
+<p>netfs</p>
+<p>rdisc</p>
+<p>postfix</p>
+<p>saslauthd</p>
+<p>restorecond</p>
+</blockquote>
+<p>执行运行级别目录下的所有的rc启动脚本，实际上都是一些链接文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">[root@chusihhua rc3.d]# ll</div><div class="line">total 0</div><div class="line">lrwxrwxrwx. 1 root root 19 Feb  6 16:06 K10saslauthd -&gt; ../init.d/saslauthd</div><div class="line">lrwxrwxrwx. 1 root root 20 Feb  6 16:06 K50netconsole -&gt; ../init.d/netconsole</div><div class="line">lrwxrwxrwx. 1 root root 21 Feb  6 16:06 K87restorecond -&gt; ../init.d/restorecond</div><div class="line">lrwxrwxrwx. 1 root root 15 Feb  6 16:06 K89rdisc -&gt; ../init.d/rdisc</div><div class="line">lrwxrwxrwx. 1 root root 22 Feb  6 16:07 S02lvm2-monitor -&gt; ../init.d/lvm2-monitor</div><div class="line">lrwxrwxrwx. 1 root root 19 Feb  6 16:06 S08ip6tables -&gt; ../init.d/ip6tables</div><div class="line">lrwxrwxrwx. 1 root root 18 Feb  6 16:06 S08iptables -&gt; ../init.d/iptables</div><div class="line">lrwxrwxrwx. 1 root root 17 Feb  6 16:06 S10network -&gt; ../init.d/network</div><div class="line">lrwxrwxrwx. 1 root root 16 Feb  6 16:07 S11auditd -&gt; ../init.d/auditd</div><div class="line">lrwxrwxrwx. 1 root root 17 Feb  6 16:06 S12rsyslog -&gt; ../init.d/rsyslog</div><div class="line">lrwxrwxrwx. 1 root root 26 Feb  6 16:07 S25blk-availability -&gt; ../init.d/blk-availability</div><div class="line">lrwxrwxrwx. 1 root root 15 Feb  6 16:06 S25netfs -&gt; ../init.d/netfs</div><div class="line">lrwxrwxrwx. 1 root root 19 Feb  6 16:06 S26udev-post -&gt; ../init.d/udev-post</div><div class="line">lrwxrwxrwx. 1 root root 14 Feb  6 16:07 S55sshd -&gt; ../init.d/sshd</div><div class="line">lrwxrwxrwx. 1 root root 17 Feb  6 16:06 S80postfix -&gt; ../init.d/postfix</div><div class="line">lrwxrwxrwx. 1 root root 15 Feb  6 16:06 S90crond -&gt; ../init.d/crond</div><div class="line">lrwxrwxrwx. 1 root root 11 Feb  6 16:06 S99local -&gt; ../rc.local</div></pre></td></tr></table></figure></p>
+<p>真正的rc启动脚本实际上都是放在/etc/rc.d/init.d/目录下。而这些rc启动脚本有着类似的用法，它们一般能接受start、stop、restart、status等参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">[root@chusihhua init.d]# ll</div><div class="line">total 136</div><div class="line">-rwxr-xr-x. 1 root root  3378 Jun 22  2012 auditd</div><div class="line">-r-xr-xr-x. 1 root root  1340 Feb 22  2013 blk-availability</div><div class="line">-rwxr-xr-x. 1 root root  2793 Jul 19  2011 crond</div><div class="line">-rw-r--r--. 1 root root 18216 Jan  9  2013 functions</div><div class="line">-rwxr-xr-x. 1 root root  5829 Jan  9  2013 halt</div><div class="line">-rwxr-xr-x. 1 root root  9515 Feb 22  2013 ip6tables</div><div class="line">-rwxr-xr-x. 1 root root  9409 Feb 22  2013 iptables</div><div class="line">-rwxr-xr-x. 1 root root   652 Jan  9  2013 killall</div><div class="line">-r-xr-xr-x. 1 root root  2134 Feb 22  2013 lvm2-lvmetad</div><div class="line">-r-xr-xr-x. 1 root root  2665 Feb 22  2013 lvm2-monitor</div><div class="line">-rwxr-xr-x. 1 root root  2989 Jan  9  2013 netconsole</div><div class="line">-rwxr-xr-x. 1 root root  5486 Jan  9  2013 netfs</div><div class="line">-rwxr-xr-x. 1 root root  6334 Jan  9  2013 network</div><div class="line">-rwxr-xr-x. 1 root root  3852 Dec  3  2011 postfix</div><div class="line">-rwxr-xr-x. 1 root root  1559 May 20  2009 rdisc</div><div class="line">-rwxr-xr-x. 1 root root  1822 Feb 22  2013 restorecond</div><div class="line">-rwxr-xr-x. 1 root root  2011 Jan 10  2013 rsyslog</div><div class="line">-rwxr-xr-x. 1 root root  1698 Feb 22  2013 sandbox</div><div class="line">-rwxr-xr-x. 1 root root  2056 Nov 20  2012 saslauthd</div><div class="line">-rwxr-xr-x. 1 root root   647 Jan  9  2013 single</div><div class="line">-rwxr-xr-x. 1 root root  4534 Feb 22  2013 sshd</div><div class="line">-rwxr-xr-x. 1 root root  2294 Feb 22  2013 udev-post</div></pre></td></tr></table></figure></p>
+<p>##<a name="id3">3）chkconfig命令详解</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">chkconfig命令主要用来更新（启动或停止）和查询系统服务的运行级信息。谨记chkconfig不是立即自动禁止或激活一个服务，它只是简单的改变了符号连接。</div><div class="line"></div><div class="line">一、chkconfig 的使用语法</div><div class="line">1、chkconfig [--add][--del][--list][系统服务] 或 chkconfig [--level &lt;levels等级代号&gt;][系统服务][on/off/reset]</div><div class="line"></div><div class="line">2、参数用法：</div><div class="line">  --add 　增加所指定的系统服务，让chkconfig指令得以管理它，并同时在系统启动的叙述文件内增加相关数据。</div><div class="line">  --del 　删除所指定的系统服务，不再由chkconfig指令管理，并同时在系统启动的叙述文件内删除相关数据。</div><div class="line">  --level&lt;等级代号&gt; 　指定读系统服务要在哪一个执行等级中开启或关毕。</div><div class="line">      等级0表示：表示关机</div><div class="line">      等级1表示：单用户模式</div><div class="line">      等级2表示：无网络连接的多用户命令行模式</div><div class="line">      等级3表示：有网络连接的多用户命令行模式</div><div class="line">      等级4表示：系统保留</div><div class="line">      等级5表示：带图形界面的多用户模式</div><div class="line">      等级6表示：重新启动</div><div class="line"> 3、需要说明的是，level选项可以指定要查看的运行级而不一定是当前运行级。对于每个运行级，只能有一个启动脚本或者停止脚本。当切换运行级时，init不会重新启动已经启动的服务，也不会再次去停止已经停止的服务。</div><div class="line"></div><div class="line">4、chkconfig --list [name]：显示所有运行级系统服务的运行状态信息（on或off）。如果指定了name，那么只显示指定的服务在不同运行级的状态。</div><div class="line">5、chkconfig --add name：增加一项新的服务。chkconfig确保每个运行级有一项启动(S)或者杀死(K)入口。如有缺少，则会从缺省的init脚本自动建立。</div><div class="line">    chkconfig --del name：删除服务，并把相关符号连接从/etc/rc[0-6].d删除。</div><div class="line">    chkconfig [--level levels] name：设置某一服务在指定的运行级是被启动，停止还是重置。</div><div class="line"></div><div class="line">6、运行级文件：</div><div class="line">每个被chkconfig管理的服务需要在对应的init.d下的脚本加上两行或者更多行的注释。第一行告诉chkconfig缺省启动的运行级以及启动和停止的优先级。如果某服务缺省不在任何运行级启动，那么使用 - 代替运行级。第二行对服务进行描述，可以用\ 跨行注释。</div><div class="line">例如，random.init包含三行：</div><div class="line"># chkconfig: 2345 20 80</div><div class="line"># description: Saves and restores system entropy pool for \</div><div class="line"># higher quality random number generation.</div><div class="line"></div><div class="line">使用范例：</div><div class="line">chkconfig --list        #列出所有的系统服务</div><div class="line">chkconfig --add httpd        #增加httpd服务</div><div class="line">chkconfig --del httpd        #删除httpd服务</div><div class="line">chkconfig --level  2345  httpd  on        #设置httpd在运行级别为2、3、4、5的情况下都是on（开启）的状态</div><div class="line">chkconfig --list        #列出系统所有的服务启动情况</div><div class="line">chkconfig --list mysqld        #列出mysqld服务设置情况</div><div class="line">chkconfig --level 35 mysqld on        #设定mysqld在等级3和5为开机运行服务，--level 35表示操作只在等级3和5执行，on表示启动，off表示关闭</div><div class="line">chkconfig mysqld on        #设定mysqld在各等级为on，“各等级”包括2、3、4、5等级</div><div class="line"></div><div class="line">7、如何增加一个服务：以mysqld 为例</div><div class="line">(1)、服务脚本必须存放在/etc/init.d/目录下；</div><div class="line">(2)、chkconfig --add mysqld  #添加服务，在chkconfig工具服务列表中增加此服务，此时服务会被在/etc/rc.d/rcN.d中赋予K/S入口；</div><div class="line">(3)、chkconfig --level 35 mysqld on  #  修改服务的默认启动等级。</div></pre></td></tr></table></figure></p>
+<p>##<a name="id4">4）服务的启动和关闭</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">二、服务的启动/关闭</div><div class="line">1、系统服务：一直在内存中，而且一直在运行，并提供服务的被称为服务；</div><div class="line"></div><div class="line">2、而服务也是一个运行的程序，则这个运行的程序则被称为daemons；</div><div class="line"></div><div class="line">3、这些服务的启动脚本一般放置在： /etc/init.d</div><div class="line"></div><div class="line">4、在CentOS中服务启动脚本放置在：/etc/rc.d/init.d而/etc/init.d这个目录为公认的目录，在centos中/etc/init.d就是一个链接档案</div><div class="line"></div><div class="line">5、/etc/sysconfig  服务初始化环境变量配置都在这个档案中。</div><div class="line"></div><div class="line">6、/var/lib  各个服务产生的数据库都在这个目录下，最简单的在这里找到 mysql 使用 vim 打开就可以看到，你建立的数据库以及系统默认产生的数据库名称都在这里面！</div><div class="line"></div><div class="line">7、启动/停止/重启服务 ：  /etc/init.d/ serverName  start/stop /restart/status</div><div class="line"></div><div class="line">8、启动/停止/重启服务：  service  serverName  start/stop/restart  为什么可以这样写？</div><div class="line"></div><div class="line">9、service 是一个script  他可以分析你后面下达的参数，然后根据你的参数在到/etc/init.d 下去取得正确的服务来 stop  start  restart</div></pre></td></tr></table></figure></p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://huabuzaiyang.com/2017/02/11/2linux服务启动配置文件的作用和流程/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/10/1Linux系统启动/" class="archive-article-date">
-  	<time datetime="2017-02-10T06:27:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-10</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/10/1Linux系统启动/">Linux系统启动流程</a>
-    </h1>
+    <a href="/2017/02/13/3账户管理操作机制/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Linux账户管理审计策略和验证机制
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/10/1Linux系统启动/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux系统启动流程</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -275,8 +352,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
